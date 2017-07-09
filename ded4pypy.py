@@ -24,7 +24,6 @@ modules = 0
 show = ''
 
 
-
 def Set_ip():
   i = 0
   count = 0
@@ -45,8 +44,11 @@ sh_list = [ '.closes the programm']
 def list_sp_files():
     dir = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(dir, 'pymodule')
+    counter = 0
     for filename in os.listdir(path):
         print filename
+        counter += 1
+    return counter
 
-list_sp_files()
+modules = list_sp_files()
 exec(open("logo/logo.py").read())

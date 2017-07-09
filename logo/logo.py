@@ -38,7 +38,7 @@ time.sleep (0.5)
 print (bcolors.RED + "                   +++++++++++++++++++++++++++++++++++++++                    " + bcolors.ENDC)
 print ("                     Developed by: Luna (" + bcolors.OKGREEN + "nao3301 " + bcolors.ENDC + "&" + bcolors.OKGREEN + " lupa" + bcolors.ENDC + ")")
 print ("                     Version: 0.2.X2 beta    ")
-print ("                     Modules: " + bcolors.MAGENTA +  "#{$modules}" + bcolors.ENDC)
+print ("                     Modules: " + bcolors.MAGENTA +  str(modules) + bcolors.ENDC)
 print (bcolors.RED + "                   +++++++++++++++++++++++++++++++++++++++                    \n" + bcolors.ENDC)
 print ("\n\n\n")
 
