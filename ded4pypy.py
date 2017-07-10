@@ -2,21 +2,10 @@ import os
 import time
 import datetime
 import readline
+import logging
 
-from logo/logo.py import bcolors
-
-global gtarget
-global gport
-global ghash
-global gwordlist
-global guser
-global gap
-global ginterface
-global ip
-global iprange
-global modules
-global show
-global time_now
+from  config.glob import *
+from logo.logo import bcolors
 
 gtarget = 0
 gport = 0
@@ -43,6 +32,11 @@ def Set_ip():
        break
     gap = iprange + '.1'
     iprange += '.0/24'
+
+LOG_FILENAME = '/tmp/completer.log'
+logging.basicConfig(filename=LOG_FILENAME,
+                    level=logging.DEBUG,
+                    )
 
 command_list = [ 'exit' ]
 sh_list = [ '.closes the programm']
@@ -80,3 +74,11 @@ while True:
         break
     elif (line == '') | (line == ' '):
         print "nothing to do."
+
+readline.set_completer(SimpleCompleter(command_list).complete)
+
+# Use the tab key for completion
+readline.parse_and_bind('tab: complete')
+
+# Prompt the user for text
+input_loop()
