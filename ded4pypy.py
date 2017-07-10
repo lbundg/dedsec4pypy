@@ -1,4 +1,6 @@
 import os
+import time
+import datetime
 
 global gtarget
 global gport
@@ -11,6 +13,8 @@ global ip
 global iprange
 global modules
 global show
+global time_now
+
 gtarget = 0
 gport = 0
 ghash = 0
@@ -22,7 +26,6 @@ ip = ''
 iprange = ''
 modules = 0
 show = ''
-
 
 def Set_ip():
   i = 0
@@ -46,9 +49,20 @@ def list_sp_files():
     path = os.path.join(dir, 'pymodule')
     counter = 0
     for filename in os.listdir(path):
-        print filename
+        print filename[:-3]
         counter += 1
+        command_list.append(filename[:-3])
     return counter
-
+time_now = datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S')
 modules = list_sp_files()
 exec(open("logo/logo.py").read())
+
+
+if (int(datetime.datetime.now().strftime('%H')) >= 6) & (int(datetime.datetime.now().strftime('%H')) <= 12):
+  print ( "  good morning!")
+if (int(datetime.datetime.now().strftime('%H')) > 12) & (int(datetime.datetime.now().strftime('%H')) <= 17):
+  print ( "  good afternoon!")
+if (int(datetime.datetime.now().strftime('%H')) > 17) & (int(datetime.datetime.now().strftime('%H')) <= 22):
+  print ( "  good evening!")
+else :
+  print ( "  good night!")
