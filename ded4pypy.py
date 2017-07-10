@@ -1,6 +1,9 @@
 import os
 import time
 import datetime
+import readline
+
+from logo/logo.py import bcolors
 
 global gtarget
 global gport
@@ -60,9 +63,20 @@ exec(open("logo/logo.py").read())
 
 if (int(datetime.datetime.now().strftime('%H')) >= 6) & (int(datetime.datetime.now().strftime('%H')) <= 12):
   print ( "  good morning!")
-if (int(datetime.datetime.now().strftime('%H')) > 12) & (int(datetime.datetime.now().strftime('%H')) <= 17):
+elif (int(datetime.datetime.now().strftime('%H')) > 12) & (int(datetime.datetime.now().strftime('%H')) <= 17):
   print ( "  good afternoon!")
-if (int(datetime.datetime.now().strftime('%H')) > 17) & (int(datetime.datetime.now().strftime('%H')) <= 22):
+elif (int(datetime.datetime.now().strftime('%H')) > 17) & (int(datetime.datetime.now().strftime('%H')) <= 22):
   print ( "  good evening!")
 else :
   print ( "  good night!")
+
+readline.parse_and_bind('tab: complete')
+readline.parse_and_bind('set editing-mode vi')
+
+line = raw_input('~ ')
+while True:
+    if line == 'exit':
+        print (bcolors.RED + " hope you made a big loot!" + bcolors.ENDc )
+        break
+    elif (line == '') | (line == ' '):
+        print "nothing to do."
