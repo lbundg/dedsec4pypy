@@ -4,8 +4,8 @@ import datetime
 import readline
 import logging
 
-from  config.glob import *
-from logo.logo import bcolors
+from config.glob import *
+from logo.color import *
 
 gtarget = 0
 gport = 0
@@ -67,7 +67,7 @@ else :
 readline.parse_and_bind('tab: complete')
 readline.parse_and_bind('set editing-mode vi')
 
-line = raw_input('~ ')
+line = raw_input('\n~ ')
 while True:
     if line == 'exit':
         print (bcolors.RED + " hope you made a big loot!" + bcolors.ENDc )
