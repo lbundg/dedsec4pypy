@@ -8,6 +8,7 @@ import os.path
 from config.glob import *
 from logo.color import bcolors
 
+
 gtarget = 0
 gport = 0
 ghash = 0
@@ -71,7 +72,7 @@ readline.set_completer(SimpleCompleter(command_list).complete)
 while True:
     line = raw_input('\n~ ')
     if line == 'exit':
-        print (" hope you made a big loot!") #(bcolors.RED + " hope you made a big loot!" + bcolors.ENDc )
+        print (bcolors.RED + " \n hope you made a big loot!\n" + bcolors.ENDC )
         break
     elif (line == '') | (line == ' '):
         print "nothing to do."
