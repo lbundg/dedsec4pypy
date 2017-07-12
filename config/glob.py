@@ -40,10 +40,3 @@ class SimpleCompleter(object):
         logging.debug('complete(%s, %s) => %s',
                       repr(text), state, repr(response))
         return response
-
-
-def input_loop():
-    line = ''
-    while line != 'stop':
-        line = raw_input('Prompt ("stop" to quit): ')
-        print 'Dispatch %s' % line

@@ -33,7 +33,7 @@ def logo():
     print ("                     Time: "+ bcolors.ORANGE + time_now + "  " + bcolors.ENDC)
     print ("                     Modules: " + bcolors.MAGENTA +  str(modules) + bcolors.ENDC)
     print (bcolors.RED + "                   +++++++++++++++++++++++++++++++++++++++                    \n" + bcolors.ENDC)
-    print ("\n\n\n")
+    print ("\n")
 
     time.sleep (0.5)
 
