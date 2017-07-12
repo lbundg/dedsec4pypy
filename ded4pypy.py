@@ -2,21 +2,11 @@ import os
 import time
 import datetime
 import readline
+import logging
+import os.path
 
-from logo/logo.py import bcolors
-
-global gtarget
-global gport
-global ghash
-global gwordlist
-global guser
-global gap
-global ginterface
-global ip
-global iprange
-global modules
-global show
-global time_now
+from config.glob import *
+from logo.color import bcolors
 
 gtarget = 0
 gport = 0
@@ -44,6 +34,11 @@ def Set_ip():
     gap = iprange + '.1'
     iprange += '.0/24'
 
+LOG_FILENAME = '/tmp/completer.log'
+logging.basicConfig(filename=LOG_FILENAME,
+                    level=logging.DEBUG,
+                    )
+
 command_list = [ 'exit' ]
 sh_list = [ '.closes the programm']
 
@@ -52,7 +47,6 @@ def list_sp_files():
     path = os.path.join(dir, 'pymodule')
     counter = 0
     for filename in os.listdir(path):
-        print filename[:-3]
         counter += 1
         command_list.append(filename[:-3])
     return counter
@@ -72,11 +66,19 @@ else :
 
 readline.parse_and_bind('tab: complete')
 readline.parse_and_bind('set editing-mode vi')
+readline.set_completer(SimpleCompleter(command_list).complete)
 
-line = raw_input('~ ')
 while True:
+    line = raw_input('\n~ ')
     if line == 'exit':
-        print (bcolors.RED + " hope you made a big loot!" + bcolors.ENDc )
+        print (" hope you made a big loot!") #(bcolors.RED + " hope you made a big loot!" + bcolors.ENDc )
         break
     elif (line == '') | (line == ' '):
         print "nothing to do."
+    else:
+        modupy = "pymodule/" + line + ".py"
+        if (os.path.isfile(modupy)):
+            exec(open(modupy).read())
+
+        else:
+            print ("command not known please type help." )
