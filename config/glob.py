@@ -40,7 +40,7 @@ global time_now
 #         logging.debug('complete(%s, %s) => %s',
 #                       repr(text), state, repr(response))
 #         return response
-def global completer(text, state):
+def completer(text, state):
     try:
         matches = completions[text]
     except KeyError:
