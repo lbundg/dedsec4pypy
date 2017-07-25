@@ -98,4 +98,4 @@ while True:
 
         else:
             print ("command not known please type help." )
-            print command_list
+            
