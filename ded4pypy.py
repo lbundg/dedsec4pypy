@@ -42,6 +42,20 @@ logging.basicConfig(filename=LOG_FILENAME,
 
 command_list = [ 'exit' ]
 sh_list = [ '.closes the programm']
+completions = {}
+
+def completer(text, state):
+    try:
+        matches = completions[text]
+    except KeyError:
+        matches = [value for value in command_list
+                   if text.upper() in value.upper()]
+        completions[text] = matches
+    try:
+        return matches[state]
+    except IndexError:
+        return None
+
 
 def list_sp_files():
     dir = os.path.dirname(os.path.abspath(__file__))
@@ -65,9 +79,10 @@ elif (int(datetime.datetime.now().strftime('%H')) > 17) & (int(datetime.datetime
 else :
   print ( "  good night!")
 
-readline.parse_and_bind('tab: complete')
-readline.parse_and_bind('set editing-mode vi')
-readline.set_completer(SimpleCompleter(command_list).complete)
+readline.set_completer(completer)
+readline.parse_and_bind('tab: menu-complete')
+# readline.parse_and_bind('set editing-mode vi')
+# readline.set_completer(SimpleCompleter(command_list).complete)
 
 while True:
     line = raw_input('\n~ ')
@@ -83,3 +98,4 @@ while True:
 
         else:
             print ("command not known please type help." )
+            print command_list
