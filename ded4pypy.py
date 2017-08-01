@@ -83,6 +83,7 @@ readline.set_completer(completer)
 readline.parse_and_bind('tab: menu-complete')
 # readline.parse_and_bind('set editing-mode vi')
 # readline.set_completer(SimpleCompleter(command_list).complete)
+# blablahdhd
 
 while True:
     line = raw_input('\n~ ')
@@ -98,4 +99,3 @@ while True:
 
         else:
             print ("command not known please type help." )
-            
