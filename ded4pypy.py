@@ -8,7 +8,7 @@ import os.path
 from config.glob import *
 from logo.color import bcolors
 
-// test
+
 
 gtarget = 0
 gport = 0
